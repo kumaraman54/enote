@@ -1,18 +1,15 @@
 const connectToMongo = require('./db');
 const express = require('express');
 const cors = require('cors')
-
-const app = express();
 const port = 5000;
+const app = express();
 
-const dotenv = require('dotenv')
-dotenv.config();
+
 app.use(cors());
-
 
 connectToMongo();
 // const corsOptions = {
-//   origin: ['https://enote-qawk.vercel.app','http://localhost:3000'], // Allow only requests from this origin
+//   origin: ['https://enote-qawk.vercel.app','http://localhost:5000'], // Allow only requests from this origin
 //   methods: 'GET,POST,PUT,OPTIONS,DELETE,UPDATE,PATCH', // Allow only these methods
 //   // credentials: true, // Allow credentials (cookies, authorization headers)
 //   //allowedHeaders: ['Content-Type', 'Authorization'], // Allow only these headers
