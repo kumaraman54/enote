@@ -7,9 +7,14 @@ connectToMongo();
 
 const app = express();
 const port = 5000;
+const corsOptions = {
+  origin: ['https://enote-rho.vercel.app','http://localhost:3000'], // Allow only requests from this origin
+  methods: 'GET,POST,PUT,OPTIONS,DELETE,UPDATE,PATCH', // Allow only these methods
+  credentials: true, // Allow credentials (cookies, authorization headers)
+  //allowedHeaders: ['Content-Type', 'Authorization'], // Allow only these headers
+};
 
-
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json()); // Middleware to parse JSON
 
