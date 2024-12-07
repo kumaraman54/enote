@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json()); // Middleware to parse JSON
 
 // Available Routes
+app.get('/',(res)=>res.json({mssg : "SERVER WORKING CORRECTLY"}))
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
 
