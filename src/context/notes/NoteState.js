@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 
 const NoteState = (props) => {
   // const host = "http://localhost:5000";
-  const host = "https://enote-rho.vercel.app"
+  const host = "https://enote-pi.vercel.app/"
   const notesInitial = [];
 
   const [notes, setNotes] = useState(notesInitial);
