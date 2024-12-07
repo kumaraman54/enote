@@ -2,7 +2,8 @@ import NoteContext from "./noteContext";
 import { useState, useCallback } from "react";
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  // const host = "http://localhost:5000";
+  const host = "https://enote-rho.vercel.app/"
   const notesInitial = [];
 
   const [notes, setNotes] = useState(notesInitial);
@@ -16,6 +17,7 @@ const NoteState = (props) => {
           "Content-Type": "application/json",
           "auth-token":
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0ZGZlYmM1ZGU1NDFjY2FmMzM1Zjk3In0sImlhdCI6MTczMzE2NDczMn0.14U5bpUwQXJCaNWL-n4DlF85O3s-BQTvELMr0n37Cuw",
+            "access-control-allow-origin" : "*"
         },
       });
 
