@@ -4,9 +4,8 @@
   "description": "inotebook-Your notebook on the cloud",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",               
-    "dev": "nodemon index.js",
-    "build": "echo 'No build step required'" 
+    "start": "nodemon index.js",               
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
