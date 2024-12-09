@@ -16,7 +16,7 @@ const NoteState = (props) => {
         headers: {
           "Content-Type": "application/json",
           "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0ZGZlYmM1ZGU1NDFjY2FmMzM1Zjk3In0sImlhdCI6MTczMzE2NDczMn0.14U5bpUwQXJCaNWL-n4DlF85O3s-BQTvELMr0n37Cuw",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NzI3NzFjYmFlNGIwNzQwYTY3MTMwIn0sImlhdCI6MTczMzc2NDk3N30.63f3z8J3A2M-dufWWv3IQMeMmHYMKnNcxEVZmTAaIQY",
             "Access-Control-Allow-Origin" : "*",
         },
       });
@@ -41,7 +41,7 @@ const NoteState = (props) => {
         headers: {
           "Content-Type": "application/json",
           "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0ZGZlYmM1ZGU1NDFjY2FmMzM1Zjk3In0sImlhdCI6MTczMzE2NDczMn0.14U5bpUwQXJCaNWL-n4DlF85O3s-BQTvELMr0n37Cuw",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NzI3NzFjYmFlNGIwNzQwYTY3MTMwIn0sImlhdCI6MTczMzc2NDk3N30.63f3z8J3A2M-dufWWv3IQMeMmHYMKnNcxEVZmTAaIQY",
             "Access-Control-Allow-Origin" : "*",
 
 
@@ -69,7 +69,7 @@ const NoteState = (props) => {
         headers: {
           "Content-Type": "application/json",
           "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0ZGZlYmM1ZGU1NDFjY2FmMzM1Zjk3In0sImlhdCI6MTczMzE2NDczMn0.14U5bpUwQXJCaNWL-n4DlF85O3s-BQTvELMr0n37Cuw",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NzI3NzFjYmFlNGIwNzQwYTY3MTMwIn0sImlhdCI6MTczMzc2NDk3N30.63f3z8J3A2M-dufWWv3IQMeMmHYMKnNcxEVZmTAaIQY",
             "Access-Control-Allow-Origin" : "*",
 
 
@@ -98,27 +98,22 @@ const NoteState = (props) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0ZGZlYmM1ZGU1NDFjY2FmMzM1Zjk3In0sImlhdCI6MTczMzE2NDczMn0.14U5bpUwQXJCaNWL-n4DlF85O3s-BQTvELMr0n37Cuw",
-            "Access-Control-Allow-Origin" : "*",
-
-
-
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NzI3NzFjYmFlNGIwNzQwYTY3MTMwIn0sImlhdCI6MTczMzc2NDk3N30.63f3z8J3A2M-dufWWv3IQMeMmHYMKnNcxEVZmTAaIQY", // Replace with a valid token
         },
         body: JSON.stringify({ title, description, tag }),
       });
-
+  
       if (!response.ok) {
-        throw new Error(`Failed to update note: ${response.statusText}`);
+        throw new Error("Failed to update note");
       }
-
-      const json = await response.json();
-      console.log("Note updated:", json);
-
-      const newNotes = notes.map((note) =>
-        note._id === id ? { ...note, title, description, tag } : note
+  
+    await response.json();
+  
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note._id === id ? { ...note, title, description, tag } : note
+        )
       );
-      setNotes(newNotes);
     } catch (error) {
       console.error("Error updating note:", error);
     }

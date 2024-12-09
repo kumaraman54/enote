@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
      <Navbar/>
-     <Alert message="this is amazing react course"/>
+     {/* <Alert message="this is amazing react course"/> */}
      <Outlet/>
     </div>
   );

@@ -69,14 +69,12 @@ const Navbar = () => {
 
           {/* Search Bar */}
           <div className="flex items-center space-x-2 px-4 py-2 lg:p-0">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="px-4 py-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            />
-            <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400">
-              Search
-            </button>
+            <Link to="/login" className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400">
+              Login
+            </Link>
+            <Link to="/signup" className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400">
+              SignUp
+            </Link>
           </div>
         </div>
       </div>

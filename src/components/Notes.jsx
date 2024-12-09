@@ -1,38 +1,54 @@
-import React, { useContext, useEffect, useState } from 'react';
-import noteContext from '../context/notes/noteContext';
-import Noteitem from './Noteitem';
-import AddNote from './AddNote';
+import React, { useContext, useEffect, useState } from "react";
+import noteContext from "../context/notes/noteContext";
+import Noteitem from "./Noteitem";
+import AddNote from "./AddNote";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
 
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
-  const [currentNote, setCurrentNote] = useState(null); // State to store the note to be edited
-  const [note, setNote] = useState({ title: "", description: "", tag: "" });
+  const [note, setNote] = useState({
+    id: "",
+    etitle: "",
+    edescription: "",
+    etag: "",
+  });
 
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Open the modal and set the current note
   const updateNote = (currentNote) => {
-    setCurrentNote(note); 
-    setShowModal(true); 
-    setNote(currentNote);
-  };
-  
-  const onChange = (e) => {
-    setNote({ ...note, [e.target.name]: e.target.value }); // Update state for corresponding input field
-  };
-  const handleClick = (e) => {
-    e.preventDefault();
-  
+    setShowModal(true);
+    setNote({
+      id: currentNote._id,
+      etitle: currentNote.title,
+      edescription: currentNote.description,
+      etag: currentNote.tag,
+    });
   };
 
+  // Handle input changes
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
+
+  // Handle the save action
+  const handleClick = async (e) => {
+    e.preventDefault();
+    console.log("Updating the note...");
+    await editNote(note.id, note.etitle, note.edescription, note.etag);
+    setShowModal(false); // Close the modal after saving
+    setNote({ id: "", etitle: "", edescription: "", etag: "" }); // Reset state
+  };
+
+  // Close the modal without saving
   const closeModal = () => {
-    setShowModal(false); 
-    setCurrentNote(null); 
+    setShowModal(false);
+    setNote({ id: "", etitle: "", edescription: "", etag: "" });
   };
 
   return (
@@ -51,92 +67,64 @@ const Notes = () => {
                 &times;
               </button>
             </div>
-
-       
-            <div className="mb-4">
-              <p className="text-gray-700">
-                Editing note: <strong>{currentNote?.title}</strong>
-              </p>
-     
-              <form onSubmit={handleClick}>
-          <div className="mb-4">
-            <label
-              htmlFor="title"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Title:
-            </label>
-            <input
-              type="text"
-              id="etitle"
-              name="etitle" 
-              placeholder="Enter note title"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              value={note.title}
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="description"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Add Note:
-            </label>
-            <textarea
-              id="edescription"
-              name="edescription" 
-              placeholder="Write your note here..."
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              rows="4"
-              value={note.description}
-              onChange={onChange}
-            ></textarea>
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="tag"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Tag:
-            </label>
-            <input
-              type="text"
-              id="etag"
-              name="etag" 
-              placeholder="Enter a tag"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              value={note.tag}
-              onChange={onChange}
-            />
-          </div>
-        </form>
-              {/* Add a form or input fields here for editing */}
-            </div>
-
-        
-            <div className="flex justify-end space-x-2">
-              <button
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
-                onClick={closeModal}
-              >
-                Cancel
-              </button>
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-              >
-                Save Changes
-              </button>
-            </div>
+            <form onSubmit={handleClick}>
+              <div className="mb-4">
+                <label htmlFor="etitle" className="block text-gray-700 font-medium mb-2">
+                  Title:
+                </label>
+                <input
+                  type="text"
+                  id="etitle"
+                  name="etitle"
+                  className="w-full border rounded-lg px-3 py-2"
+                  value={note.etitle}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="edescription" className="block text-gray-700 font-medium mb-2">
+                  Description:
+                </label>
+                <textarea
+                  id="edescription"
+                  name="edescription"
+                  className="w-full border rounded-lg px-3 py-2"
+                  rows="4"
+                  value={note.edescription}
+                  onChange={onChange}
+                  required
+                ></textarea>
+              </div>
+              <div className="mb-4">
+                <label htmlFor="etag" className="block text-gray-700 font-medium mb-2">
+                  Tag:
+                </label>
+                <input
+                  type="text"
+                  id="etag"
+                  name="etag"
+                  className="w-full border rounded-lg px-3 py-2"
+                  value={note.etag}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="flex justify-end space-x-2">
+                <button className="bg-gray-300 py-2 px-4 rounded" onClick={closeModal}>
+                  Cancel
+                </button>
+                <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
+                  Save Changes
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
 
-   
-      <div className="bg-white p-6 rounded-lg shadow-md w-full">
+      <div className="bg-white p-6 rounded-lg w-full">
         <h2 className="text-xl font-semibold mb-4 text-center">Your Notes</h2>
+        {notes.length === 0 && "No notes to display"}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {notes.map((note) => (
             <Noteitem key={note._id} updateNote={updateNote} note={note} />
