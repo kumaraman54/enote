@@ -29,19 +29,17 @@ const AddNote = () => {
 
   return (
     <>
-     
       <button
         onClick={openModal}
-        className="fixed bottom-4 right-4 bg-yellow-500 text-white py-6 px-6 rounded-full hover: bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg transition-transform transform hover:scale-110 active:scale-95 hover:animate-bounce z-50 flex items-center justify-center sm:py-5 sm:px-5"
+        className="fixed bottom-4 right-4 bg-yellow-500 text-white py-6 px-6 rounded-full hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg transition-transform transform hover:scale-110 active:scale-95 hover:animate-bounce z-50 flex items-center justify-center sm:py-5 sm:px-5"
         style={{ width: "70px", height: "70px" }}
         title="Add Note"
       >
         <span className="text-4xl font-bold">+</span>
       </button>
 
-    
       {showModal && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 px-4 sm:overflow-x-hidden">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full sm:max-w-sm md:max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-xl font-bold sm:text-2xl">Add a Note</h1>

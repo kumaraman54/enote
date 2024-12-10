@@ -20,10 +20,11 @@ router.post(
     }),
   ],
   async (req, res) => {
+    let success = false;
     // If there are validation errors, return a 400 error
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     try {
@@ -53,8 +54,8 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
-
-      res.json({ authtoken });
+      success = true;
+      res.json({ success,authtoken });
     } catch (error) {
       console.error(error.message);
       res.status(500).json({ error: "Internal Server Error" });
@@ -89,8 +90,9 @@ router.post(
       // Compare passwords
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
+        success = false;
         return res.status(400).json({
-          error: "Invalid login credentials. PASS NOT MATCH Please try again.",
+         success, error: "Invalid login credentials. PASS NOT MATCH Please try again.",
         });
       }
 
@@ -101,8 +103,8 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
-
-      res.json({ authtoken });
+      success = true;
+      res.json({ success,authtoken });
     } catch (error) {
       console.error(error.message);
       res.status(500).json({ error: "Internal Server Error" });
