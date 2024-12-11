@@ -3,11 +3,14 @@ import './App.css';
 import { Outlet } from 'react-router-dom'
 import Alert from './components/Alert';
 
-function App() {
+
+
+function App({alert}) {
+
   return (
     <div className="App">
      <Navbar/>
-     <Alert Alert={Alert}/>
+     <Alert alert={alert}/>
      <Outlet/>
     </div>
   );

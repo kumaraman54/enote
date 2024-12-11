@@ -7,17 +7,23 @@ function Alert(props) {
     };
 
     return (
-        <div style={{ height: '50px' ,backgroundColor: '#0d1333'}}>
-            {props.alert && (
+        <>        
+        {props.alert && (
+        <div style={{ height: '50px', backgroundColor: 'white', color: 'green'  }}>
+            
                 <div
                     className={`alert alert-${props.alert.type} alert-dismissible fade show`}
                     role="alert"
-                   
+                    
                 >
                     <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
+                    
                 </div>
-            )}
+            
         </div>
+        )}
+        </>
+
     );
 }
 

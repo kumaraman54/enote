@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
+import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
   const context = useContext(noteContext);
+  const navigate = useNavigate();
   const { notes, getNotes, editNote } = context;
 
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -16,7 +18,12 @@ const Notes = () => {
   });
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else{
+      navigate("/login"); 
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
