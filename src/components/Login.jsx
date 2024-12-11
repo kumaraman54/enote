@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const navigate = useNavigate(); // Correctly invoking the useHistory hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +27,9 @@ const Login = (props) => {
         // Save token and redirect
         localStorage.setItem("token", json.authtoken);
         navigate("/"); // Redirect to the home page
-        props.showAlert("Logged in Successfully", "success")
+        props.showAlert("Logged in Successfully", "success");
       } else {
-        props.showAlert("Invalid Details", "danger")
+        props.showAlert("Invalid Details", "danger");
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -42,9 +42,9 @@ const Login = (props) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Login to continue to Enote</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
