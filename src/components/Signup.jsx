@@ -115,7 +115,7 @@ const Signup = (props) => {
           </div>
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="w-full bg-[#f3644e] text-white py-2 px-4 rounded-md hover:bg-[#f3644e] focus:outline-none focus:ring-2 focus:ring-yellow-400"
           >
             Submit
           </button>

@@ -12,7 +12,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="bg-[#0d1333] text-white p-4">
+    <nav className="bg-[#010101] text-white p-4">
       <div className="container mx-auto flex items-center justify-between">
         <div className="text-2xl font-bold">Enote</div>
 
@@ -73,20 +73,20 @@ const Navbar = () => {
             <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-2 px-4 py-2 lg:p-0">
               <Link
                 to="/login"
-                className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400"
+                className="px-4 py-2 bg-[#f3644e] text-white rounded-lg hover:bg-[#f3644e] focus:ring-2 focus:ring-yellow-400"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400"
+                className="px-4 py-2 bg-[#f3644e] text-white rounded-lg hover:bg-[#f3644e] focus:ring-2 focus:ring-yellow-400"
               >
                 Sign Up
               </Link>
             </div>
           ) : (
             <button
-              className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:ring-2 focus:ring-red-400"
+              className="px-4 py-2 bg-[#f3644e] text-white rounded-lg hover:bg-[#f3644e] focus:ring-2 focus:ring-red-400"
               onClick={() => {
                 localStorage.removeItem("token");
                 window.location.reload();

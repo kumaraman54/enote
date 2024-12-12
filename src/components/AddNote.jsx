@@ -31,11 +31,11 @@ const AddNote = () => {
     <>
       <button
         onClick={openModal}
-        className="fixed bottom-4 right-4 bg-yellow-500 text-white py-6 px-6 rounded-full hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg transition-transform transform hover:scale-110 active:scale-95 hover:animate-bounce z-50 flex items-center justify-center sm:py-5 sm:px-5"
+        className="fixed bottom-4 right-4 bg-[#3a3a3a] text-white py-6 px-6 rounded-full hover:bg-[#3a3a3a] focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg transition-transform transform hover:scale-110 active:scale-95 hover:animate-bounce z-50 flex items-center justify-center sm:py-5 sm:px-5"
         style={{ width: "70px", height: "70px" }}
         title="Add Note"
       >
-        <span className="text-4xl font-bold">+</span>
+        <span className="text-4xl font-bold text-[#f3644e]">+</span>
       </button>
 
       {showModal && (

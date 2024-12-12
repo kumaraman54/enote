@@ -59,7 +59,7 @@ const Notes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d1333] p-6">
+    <div className="min-h-screen bg-[#010101] p-6">
       <AddNote />
 
       {showModal && (
@@ -129,8 +129,8 @@ const Notes = () => {
         </div>
       )}
 
-      <div className=" bg-[#0d1333] p-6 rounded-lg w-full">
-        <h2 className="text-xl font-semibold mb-4 text-center text-gray-800">Your Notes</h2>
+      <div className=" bg-[#010101] p-6 rounded-lg w-full">
+        <h2 className="text-xl font-semibold mb-4 text-center  text-[#f2f2f2]">Your Notes</h2>
         {notes.length === 0 && "No notes to display"}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {notes.map((note) => (
