@@ -1,11 +1,11 @@
 import React, {  useState} from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App.js';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import About from './components/About.jsx';
-import NoteState from './context/notes/NoteState'; // Ensure this is correctly imported
+import NoteState from './context/notes/NoteState.js'; // Ensure this is correctly imported
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 
